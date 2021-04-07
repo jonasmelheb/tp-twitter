@@ -19,6 +19,16 @@
         "name": "Jaco",
         "yearbirth": 2001
       }
+    },
+    {
+      "id": "5bf41e84-280f-4527-bc6b-ac88e0f3e149",
+      "title": "Il était trois fois",
+      "price": 78,
+      "available": false,
+      "author": {
+        "name": "Pedro",
+        "yearbirth": 1999
+      }
     }
   ]
 }
