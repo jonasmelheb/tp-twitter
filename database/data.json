@@ -1,0 +1,24 @@
+{
+  "books": [
+    {
+      "id": "1a36a7ff-7dcd-4495-bb50-ebfcce3d27c2",
+      "title": "Il était une fois",
+      "price": 5,
+      "available": true,
+      "author": {
+        "name": "Coco",
+        "yearbirth": 1987
+      }
+    },
+    {
+      "id": "85ac20eb-6f81-4f40-83e5-f94f259db2ad",
+      "title": "Il était deux fois",
+      "price": 22.89,
+      "available": false,
+      "author": {
+        "name": "Jaco",
+        "yearbirth": 2001
+      }
+    }
+  ]
+}
