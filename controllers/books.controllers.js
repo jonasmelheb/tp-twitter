@@ -5,6 +5,10 @@ exports.findBooksCtrl = (req, res) => {
 }
 
 exports.findOneCtrl = (req, res) => {
-  console.log(req.params.id);
-  res.end();
+  const { id: bookId } = req.params;
+  const book = books.find(b => b.id === bookId);
+  if (book) res.status(200).json(book);
+  else res.status(404).json({
+    error: "Book not found"
+  });
 }
