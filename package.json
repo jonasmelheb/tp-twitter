@@ -4,7 +4,7 @@
   "description": "TP Node Express",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon -r dotenv/config"
+    "start": "nodemon -r dotenv/config ./bin/www"
   },
   "keywords": [],
   "author": "",
