@@ -3,3 +3,4 @@ database/*
 !database/models*
 !database/index.js~
 .DS_Store
+.env
