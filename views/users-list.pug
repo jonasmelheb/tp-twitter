@@ -14,5 +14,6 @@ html
 
     h1 Liste des utilisateurs
     ul
-      each user in users
-        li= `${user.username} (${user.email})`
+      if users
+        each user in users
+          li= `${user.username} (${user.email})`
