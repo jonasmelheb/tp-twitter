@@ -1,7 +1,7 @@
 const { resolve } = require('path');
 
 exports.homePageCtrl = (req, res) => {
-  res.sendFile(resolve('views', 'index.html'));
+  res.render('index.pug');
 };
 
 exports.booksPageCtrl = (req, res) => {
