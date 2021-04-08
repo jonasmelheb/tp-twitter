@@ -8,12 +8,11 @@ html
     link(rel="stylesheet" href="/static/css/style.css")
     
   body
-    
     nav
-      a(href="/") Accueil
+      a(href="/") Accueil&nbsp;
       a(href="/users") Liste des utilisateurs
 
     h1 Liste des utilisateurs
     ul
-    
-    script(src="/static/js/get-books.js")
+      each user in users
+        li= `${user.username} (${user.email})`

@@ -6,6 +6,9 @@ require('./database');
 const app = express();
 
 // Configuration
+app.set('views', resolve('views'));
+app.set('view engine', 'pug');
+
 app.use('/static', express.static(resolve('public')));
 app.use('/', router);
 

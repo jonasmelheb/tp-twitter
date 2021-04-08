@@ -1,12 +1,12 @@
 const User = require('../database/models/user.model');
 
 exports.usersPage = (req, res) => {
-  User.find({})
+  User.find()
   .then(users => {
-    if (!users.length) {
-      return res.status(404).json({ error: 'no users' });
-    }
-    res.status(200).json(users);
+    res.render('users-list.pug', { users });
   })
-  .catch();
+  .catch(error => {
+    console.error(error);
+    res.render('users-list', { users: [] });
+  });
 }
