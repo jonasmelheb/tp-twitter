@@ -6,4 +6,4 @@ exports.homePageCtrl = (req, res) => {
 
 exports.booksPageCtrl = (req, res) => {
   res.sendFile(resolve('views', 'books-list.html'));
-}
+};

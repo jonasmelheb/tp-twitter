@@ -1,6 +1,8 @@
 const express = require('express');
 const { resolve } = require('path');
 const router = require('./router');
+require('./database');
+
 const app = express();
 
 // Configuration
