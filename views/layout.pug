@@ -1,5 +1,5 @@
 doctype html
-html
+html(lang="fr")
   head
     meta(charset="utf-8")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
@@ -8,12 +8,9 @@ html
     link(rel="stylesheet" href="/static/css/style.css")
     
   body
-    nav
-      a(href="/") Accueil&nbsp;
-      a(href="/users") Liste des utilisateurs
+    include includes/header
 
-    h1 Liste des utilisateurs
-    ul
-      if users
-        each user in users
-          li= `${user.username} (${user.email})`
+    div.wrap
+      block content
+
+    include includes/footer
