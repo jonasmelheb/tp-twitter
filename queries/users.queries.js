@@ -1,5 +1,10 @@
 const User = require('../database/models/user.model');
 
+exports.createUser = (user) => {
+  const newUser = new User(user);
+  return newUser.save();
+}
+
 exports.findAllUsers = () => {
   return User.find().exec();
 }

@@ -1,5 +1,6 @@
 const User = require('../database/models/user.model');
 const {
+  createUser,
   findAllUsers,
   findUserByUsername,
 } = require('../queries/users.queries');
@@ -34,4 +35,22 @@ exports.signupForm = (req, res) => {
 
 exports.signinForm = (req, res) => {
   res.render('pages/users-form-page', { signup: false });
+}
+
+exports.signup = async (req, res) => {
+  const { body } = req;
+  try {
+    await createUser(body);
+    res.redirect('/users/signup');
+  }
+  catch (e) {
+    res.render('pages/users-form-page', {
+      signup: true,
+      errors: [ e.message ],
+    });
+  }
+}
+
+exports.signin = (req, res) => {
+  res.redirect('/users/signup');
 }
