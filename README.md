@@ -1,6 +1,6 @@
 # Tp touiteur 
 
-Une simple application web comme le réseau social twitter
+Une simple application web inspirée du réseau social twitter.
 
 ## Environnement 
 ### Requirements
@@ -19,12 +19,12 @@ npm ci
 ```
 
 ### Configuration
-- Renommer le fichier .env~ en .env
-- Remplir le fichier avec les bonnes informations 
+- Renommer le fichier .env~ en .env,
+- Remplir le fichier avec les bonnes informations.
 
-### Lunch the application
+### Launch the application
 ```bash
 npm run start
 ```
 
-Maintenant vous pouvez utilisé l'application sur le port 3000 de votre machine
+Maintenant vous pouvez utiliser l'application sur le port 3000 de votre machine.
