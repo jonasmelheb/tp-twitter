@@ -28,3 +28,10 @@ exports.getUserProfile = async (req, res, next) => {
   }
 }
 
+exports.signupForm = (req, res) => {
+  res.render('pages/users-form-page', { signup: true });
+}
+
+exports.signinForm = (req, res) => {
+  res.render('pages/users-form-page', { signup: false });
+}

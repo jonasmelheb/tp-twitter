@@ -1,4 +1,24 @@
 extends ../layout
 
 block content
-  h1 Formulaire des utilisateurs
+  if signup
+    h1 Formulaire d'inscription
+  else
+    h1 Formulaire de connexion
+
+  form(method="post" action=(signup?"/users/signup":"/users/signin"))
+    if signup
+      div
+        label Pseudo
+        input(type="text" name="username" autofocus)
+    div 
+      label Email
+      input(type="email" name="email" autofocus)
+    div
+      label Mot de passe
+      input(type="password" name="password")
+    div
+      if signup
+        button(type="submit") Créer mon profil
+      else
+        button(type="submit") Me connecter
