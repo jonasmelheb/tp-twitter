@@ -1,18 +1,26 @@
 .profile-container {
-  grid-area: profile;
+  /* grid-area: profile; */
+  margin-top:50px;
   width: 250px;
-  height: 250px;
+  height: 280px;
   margin-left: 60px;
   padding: 20px;
   text-align: center;
   background: #fff;
   border-radius: 5px;
-  display: grid;
+  display: flex;
+  flex-flow: column;
   gap: 30px;
-  grid-template-areas:  "avatar avatar"
-                        "touite follows";
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  /* grid-template-areas:  "avatar avatar"
+                        "touite follows"; */
 }
-
+.followBtn
+{
+  margin-bottom: 10px;
+}
 .profile-container a {
   background: var(--secondary-color);
   padding: 10px 0px;

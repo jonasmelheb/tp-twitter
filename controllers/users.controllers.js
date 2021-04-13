@@ -1,6 +1,9 @@
 const User = require('../database/models/user.model');
+const bcrypt = require('bcrypt');
+
 const {
   createUser,
+  connectUser,
   findAllUsers,
   findUserByUsername,
 } = require('../queries/users.queries');
@@ -21,7 +24,9 @@ exports.getUserProfile = async (req, res, next) => {
   try {
     const user = await findUserByUsername(username);
     const touites = [];
-    res.render('pages/users-form-page', { user, touites });
+    // console.log(user);
+    console.log(req.session);
+    res.render('pages/user-profile-page', { user, touites });
   }
   catch (e) {
     console.error(e);
@@ -51,6 +56,20 @@ exports.signup = async (req, res) => {
   }
 }
 
-exports.signin = (req, res) => {
-  res.redirect('/users/signup');
+exports.signin = async (req, res) => {
+  const { body } = req;
+  try {
+    const userFined = await connectUser(body.email, body.password);
+    const verified = bcrypt.compareSync(body.password, userFined.password);
+    if (verified) {
+      sess = req.session;
+      sess.email = body.email;
+      res.redirect('/touites')
+    }
+  } catch (e) {
+    res.render('pages/users-form-page', {
+      signup: true,
+      errors: [ e.message ]
+  })
+}
 }

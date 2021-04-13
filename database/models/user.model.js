@@ -15,11 +15,11 @@ const userSchema = mongoose.Schema({
   password: {
     type: String,
     required: [true, "Password is required"],
-  },
+  }
 });
 
 userSchema.statics.hashPassword = (password) => {
-  return bcrypt.hashSync(password, process.env.HASH_ROUNDS);
+  return bcrypt.hashSync(password, +process.env.HASH_ROUNDS);
 }
 
 const User = mongoose.model('user', userSchema);
