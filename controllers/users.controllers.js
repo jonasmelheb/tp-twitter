@@ -41,7 +41,7 @@ exports.signup = async (req, res) => {
   const { body } = req;
   try {
     await createUser(body);
-    res.redirect('/users/signup');
+    res.redirect('/users/signin');
   }
   catch (e) {
     res.render('pages/users-form-page', {

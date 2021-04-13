@@ -1,28 +1,29 @@
 extends ../layout
 
 block content
-  if signup
-    h1 Formulaire d'inscription
-  else
-    h1 Formulaire de connexion
-
-  form(method="post" action=(signup?"/users/signup":"/users/signin"))
+  div.users-form
     if signup
-      div
-        label Pseudo
-        input(type="text" name="username" autofocus)
-    div 
-      label Email
-      input(type="email" name="email" autofocus)
-    div
-      label Mot de passe
-      input(type="password" name="password")
-    if errors
-      ul.errors
-        each error in errors
-          li= error
-    div
+      h1 Formulaire d'inscription
+    else
+      h1 Formulaire de connexion
+
+    form(method="post" action=(signup?"/users/signup":"/users/signin"))
       if signup
-        button(type="submit") Créer mon profil
-      else
-        button(type="submit") Me connecter
+        div
+          label Pseudo
+          input(type="text" name="username" autofocus autocomplete="off")
+      div 
+        label Email
+        input(type="email" name="email" autocomplete="off")
+      div
+        label Mot de passe
+        input(type="password" name="password" autocomplete="off")
+      if errors
+        ul.errors
+          each error in errors
+            li= error
+      div
+        if signup
+          button(type="submit") Créer mon profil
+        else
+          button(type="submit") Me connecter

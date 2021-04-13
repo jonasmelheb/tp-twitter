@@ -19,7 +19,7 @@ const userSchema = mongoose.Schema({
 });
 
 userSchema.statics.hashPassword = (password) => {
-  return bcrypt.hashSync(password, process.env.HASH_ROUNDS);
+  return bcrypt.hashSync(password, +process.env.HASH_ROUNDS);
 }
 
 const User = mongoose.model('user', userSchema);
