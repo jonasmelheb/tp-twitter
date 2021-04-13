@@ -1,8 +1,10 @@
 const User = require('../database/models/user.model');
 
-exports.createUser = (user) => {
-  const newUser = new User(user);
-  return newUser.save();
+exports.createUser = ({ username, email, password }) => {
+  const passwordHashed = User.hashPassword(password);
+  const newUser = new User({ username, email, password: passwordHashed });
+  console.log(passwordHashed);
+  // return newUser.save();
 }
 
 exports.findAllUsers = () => {
