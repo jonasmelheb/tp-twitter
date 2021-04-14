@@ -6,7 +6,7 @@ block content
   else
     h1 Formulaire de connexion
 
-  form(method="post" action=(signup?"/users/signup":"/users/signin"))
+  form(class="users-form" method="post" action=(signup?"/users/signup":"/users/signin"))
     if signup
       div
         label Pseudo

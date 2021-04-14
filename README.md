@@ -2,10 +2,14 @@
 
 Une simple application web inspirée du réseau social twitter.
 
+## Participant 
+Younes MELHEB
+Thibaud Van Den Berghe
+Charles TUBEUF
 ## Environnement 
 ### Requirements
 
-* Node 14.16.0 LTS 
+* Node 14.16.0 LTS
 
 ### Installation
 

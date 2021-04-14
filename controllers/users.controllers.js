@@ -1,4 +1,5 @@
 const User = require('../database/models/user.model');
+const Touites = require('../database/models/touites.model');
 const bcrypt = require('bcrypt');
 
 const {
@@ -7,6 +8,10 @@ const {
   findAllUsers,
   findUserByUsername,
 } = require('../queries/users.queries');
+
+const {
+  findUserTouites,
+} = require('../queries/touites.queries');
 
 exports.getUsersList = async (req, res, next) => {
   try {
@@ -21,11 +26,10 @@ exports.getUsersList = async (req, res, next) => {
 
 exports.getUserProfile = async (req, res, next) => {
   const { username } = req.params;
+  const { email }  = req.session;
   try {
     const user = await findUserByUsername(username);
-    const touites = [];
-    // console.log(user);
-    console.log(req.session);
+    const touites = await findUserTouites(email);
     res.render('pages/user-profile-page', { user, touites });
   }
   catch (e) {
@@ -59,12 +63,13 @@ exports.signup = async (req, res) => {
 exports.signin = async (req, res) => {
   const { body } = req;
   try {
-    const userFined = await connectUser(body.email, body.password);
-    const verified = bcrypt.compareSync(body.password, userFined.password);
+    const userFinded = await connectUser(body.email, body.password);
+    const verified = bcrypt.compareSync(body.password, userFinded.password);
     if (verified) {
       sess = req.session;
       sess.email = body.email;
-      res.redirect('/touites')
+      sess.username = userFinded.username;
+      res.redirect(`/users/${userFinded.username}`)
     }
   } catch (e) {
     res.render('pages/users-form-page', {

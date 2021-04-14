@@ -1,33 +1,30 @@
 extends ../layout
 
 block content
-    div.profile-container
-        
-        div
-            img(src="/static/img/dimitri.jpg")
-        div
-        div.followBtn
-            a(href="") Follow
-
-    div.touite-wrapper
-       
-        div.touite
-            div.touite-form
-                textarea(name="", cols="30", rows="10") 
-                button Send
-            div.avatar
-                img(src="/static/img/dimitri.jpg")
-                span
-            div.icones
-                a
-        div.content
-        div.touite
-            div.touite-form
-                textarea(name="", cols="30", rows="10") 
-                button Send
-            div.avatar
-                img(src="/static/img/dimitri.jpg")
-                span
-            div.icones
-                a
-        div.content
+    div.profile
+        div.profile-container
+            
+            div
+                img(src="/static/img/touiteur.png")
+            div.row-container
+                div.stats-count 
+                    h3 Touites 
+                    div=`${touites.length}`
+                div.stats-count 
+                    h3 Follows 
+                    div 5
+        div.touites-container
+            each touite in touites
+                div.touites
+                    div.logo-username 
+                        img(src="/static/img/touiteur.png") 
+                        p=`${user.username}`
+                    div.touites-content.set(id=`${touite.id}`)
+                        p.touite-text.show=`${touite.touitesText}`
+                    div.modify-delete
+                        a.modify(onclick='modify("' + touite.id + '")')
+                            i.fas.fa-pencil-alt
+                        a(href=`/touites/delete/${touite.id}`)
+                            i.fas.fa-trash-alt
+block scripts                            
+    script(src="/static/js/script.js") 

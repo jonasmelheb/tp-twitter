@@ -1,5 +1,5 @@
 .profile-container {
-  /* grid-area: profile; */
+ 
   margin-top:50px;
   width: 250px;
   height: 280px;
@@ -14,8 +14,6 @@
   box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
   -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-  /* grid-template-areas:  "avatar avatar"
-                        "touite follows"; */
 }
 .followBtn
 {
@@ -28,14 +26,4 @@
   font-weight: bold;
   width: 130px;
   display: inline-block;
-}
-
-.profile-container > div:first-of-type {
-  grid-area: avatar;
-}
-.profile-container > div:nth-of-type(2) {
-  grid-area: touite;
-}
-.profile-container > div:last-of-type {
-  grid-area: follows;
 }

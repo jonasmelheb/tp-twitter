@@ -1,0 +1,16 @@
+extends ../layout
+
+block content
+    h1 Formulaire des touites
+    div.touite-wrapper    
+        div.touite
+            
+            div.avatar
+                h3 Formulaire de touites
+                span
+            form.touite-form(method="post" action=("/touites/form/create"))
+                textarea(name="touitesText", cols="30", rows="10") 
+                button(type="submit") Send
+            div.icones
+                a
+        div.content

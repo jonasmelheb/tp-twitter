@@ -8,6 +8,7 @@ const touitesSchema = mongoose.Schema({
   userEmail: {
     type: String,
     required: [true, "Veuillez vous connecter!"],
+    unique: false,
   }
 });
 
