@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const { hashRounds } = require('../../environment');
 
 const userSchema = mongoose.Schema({
   username: {
@@ -19,7 +20,7 @@ const userSchema = mongoose.Schema({
 });
 
 userSchema.statics.hashPassword = (password) => {
-  return bcrypt.hashSync(password, +process.env.HASH_ROUNDS);
+  return bcrypt.hashSync(password, hashRounds);
 }
 
 const User = mongoose.model('user', userSchema);
