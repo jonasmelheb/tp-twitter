@@ -1,3 +1,6 @@
 node_modules
 .DS_Store
 environment.js
+ssl/*
+!ssl/.gitkeep
+views/layout.pug~

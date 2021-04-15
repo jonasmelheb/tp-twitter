@@ -4,13 +4,13 @@
   "description": "TP Node Express",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "browser-refresh -r ./refresh.js ./bin/www"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^2.0.7"
+    "browser-refresh": "^1.7.3"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
