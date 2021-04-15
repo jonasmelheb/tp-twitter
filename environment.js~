@@ -1,3 +1,5 @@
+const { resolve } = require('path');
+
 module.exports = {
   db: {
     protocol: 'DB_PROTOCOL',
@@ -7,5 +9,13 @@ module.exports = {
     user: 'DB_USER',
     password: 'DB_PASSWORD',
   },
-  hashRounds: HASH_ROUNDS,
+  hashRounds: HASH_ROUNDS,,
+  ssl: {
+    cert: resolve('ssl', 'CERT_FILE'),
+    key: resolve('ssl', 'KEY_FILE'),
+  },
+  ports: {
+    http: HTTP_PORT,
+    https: HTTPS_PORT,
+  }
 };
