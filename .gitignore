@@ -3,3 +3,4 @@ node_modules
 environment.js
 ssl/*
 !ssl/.gitkeep
+views/layout.pug~

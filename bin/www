@@ -14,4 +14,10 @@ http.createServer((req, res) => {
 
 const cert = readFileSync(ssl.cert);
 const key = readFileSync(ssl.key);
-https.createServer({ cert, key }, app).listen(ports.https);
+https
+  .createServer({ cert, key }, app)
+  .listen(ports.https, () => {
+    if (process.send) {
+      process.send('online');
+    }
+  });
