@@ -1,8 +1,10 @@
 const router = require('express').Router();
-const appRoutes = require('./app.routes');
+const touitesRouter = require('./touites.routes');
 const usersRouter = require('./users.routes');
 
-router.use('/', appRoutes);
+router.use('/touites', touitesRouter);
 router.use('/users', usersRouter);
+
+router.get('/', (req, res) => res.redirect('/touites'));
 
 module.exports = router;
