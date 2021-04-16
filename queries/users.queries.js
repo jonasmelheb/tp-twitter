@@ -10,6 +10,10 @@ exports.findAllUsers = () => {
   return User.find().exec();
 }
 
+exports.findUserById = (id) => {
+  return User.findById(id).exec();
+}
+
 exports.findUserByUsername = (username) => {
   return User.findOne({ username }).exec();
 }

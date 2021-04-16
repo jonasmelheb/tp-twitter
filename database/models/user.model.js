@@ -17,6 +17,13 @@ const userSchema = mongoose.Schema({
     type: String,
     required: [true, "Password is required"],
   },
+  avatar: {
+    type: String,
+    default: '/static/img/avatars/default-avatar.svg',
+  },
+  follows: {
+    type: [String],
+  },
 });
 
 userSchema.statics.hashPassword = (password) => {
