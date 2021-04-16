@@ -1,8 +1,8 @@
-const mongoose = require('mongoose');
+const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 const { hashRounds } = require('../../environment');
 
-const userSchema = mongoose.Schema({
+const userSchema = Schema({
   username: {
     type: String,
     required: [true, "Username is required !"],
@@ -22,7 +22,8 @@ const userSchema = mongoose.Schema({
     default: '/static/img/avatars/default-avatar.svg',
   },
   follows: {
-    type: [String],
+    type: [Schema.Types.ObjectId],
+    ref: 'user'
   },
 });
 
@@ -30,5 +31,5 @@ userSchema.statics.hashPassword = (password) => {
   return bcrypt.hashSync(password, hashRounds);
 }
 
-const User = mongoose.model('user', userSchema);
+const User = model('user', userSchema);
 module.exports = User;

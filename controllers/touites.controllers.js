@@ -1,4 +1,5 @@
 const { findUserById } = require('../queries/users.queries');
+const { createNewTouite } = require('../queries/touites.queries');
 
 exports.getTouitesPage = async (req, res, next) => {
   try {
@@ -8,3 +9,18 @@ exports.getTouitesPage = async (req, res, next) => {
   }
   catch (e) { next(e) }
 };
+
+exports.getTouiteFormPage = (req, res) => {
+  res.render('pages/touites-form-page', {
+    touite: {},
+  });
+}
+
+exports.createTouite = async (req, res) => {
+  const { body, user } = req;
+  try {
+    await createNewTouite(body, user);
+    res.redirect('/');
+  }
+  catch (e) { throw e }
+}
