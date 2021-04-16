@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const {
-  getTouitesList,
+  getTouitesPage,
 } = require('../controllers/touites.controllers');
 
-router.get('/', getTouitesList);
+router.get('/', getTouitesPage);
 
 module.exports = router;
