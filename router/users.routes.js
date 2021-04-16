@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { checkAuth } = require('../middlewares/check-auth.middleware');
 const {
   getUsersList,
   getUserProfile,
@@ -13,7 +14,7 @@ router.get('/signin', signinForm);
 router.post('/signup', signup);
 router.post('/signin', signin);
 
-router.get('/', getUsersList);
-router.get('/:username', getUserProfile);
+router.get('/', checkAuth, getUsersList);
+router.get('/:username', checkAuth, getUserProfile);
 
 module.exports = router;
