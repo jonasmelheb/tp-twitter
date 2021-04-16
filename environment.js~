@@ -9,10 +9,13 @@ module.exports = {
     user: 'DB_USER',
     password: 'DB_PASSWORD',
   },
-  hashRounds: HASH_ROUNDS,,
+  hashRounds: HASH_ROUNDS,
   ssl: {
     cert: resolve('ssl', 'CERT_FILE'),
     key: resolve('ssl', 'KEY_FILE'),
+  },
+  jwt: {
+    secret: 'SECRET',
   },
   ports: {
     http: HTTP_PORT,

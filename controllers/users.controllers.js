@@ -1,13 +1,15 @@
-const User = require('../database/models/user.model');
 const {
   createUser,
   findAllUsers,
   findUserByUsername,
+  findUserToConnect,
 } = require('../queries/users.queries');
+const { createToken } = require('../services/jwt.service');
 
 exports.getUsersList = async (req, res, next) => {
   try {
     const users = await findAllUsers();
+    
     res.render('pages/users-form-page', { users });
   }
   catch (e) {
@@ -51,6 +53,20 @@ exports.signup = async (req, res) => {
   }
 }
 
-exports.signin = (req, res) => {
-  res.redirect('/users/signup');
+exports.signin = async (req, res) => {
+  const { body } = req;
+  try {
+    const user = await findUserToConnect(body);
+    const token = createToken(user);
+    res.cookie('jwt', token, {
+      maxAge: 1000*60*60*24*30
+    });
+    res.redirect('/');
+  }
+  catch (e) {
+    res.render('pages/users-form-page', {
+      signup: false,
+      errors: [ e.message ],
+    });
+  }
 }
