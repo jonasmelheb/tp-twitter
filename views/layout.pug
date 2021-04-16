@@ -1,0 +1,18 @@
+doctype html
+html(lang="fr")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="shortcut icon" href="/static/favicon.png" type="image/png")
+    title TP Touiteur
+    link(rel="stylesheet" href="/static/css/style.css")
+    
+  body
+    include includes/header
+
+    div.wrap
+      block content
+
+    include includes/footer
+
+    script(src="http://localhost:56965/browser-refresh.js")

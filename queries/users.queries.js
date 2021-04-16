@@ -13,3 +13,17 @@ exports.findAllUsers = () => {
 exports.findUserByUsername = (username) => {
   return User.findOne({ username }).exec();
 }
+
+exports.findUserToConnect = async ({ email, password }) => {
+  try {
+    const user = await User.findOne({ email }).exec();
+    if (user) { // Vérification du mot de passe
+      delete user.password;
+      return user;
+    }
+    else {
+      throw "user not found";
+    }
+  }
+  catch (e) { throw e }
+}
