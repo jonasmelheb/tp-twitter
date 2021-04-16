@@ -1,10 +1,13 @@
+const { createToken } = require('../services/jwt.service');
+const { resolve } = require('path');
+const multer = require('multer');
 const {
   createUser,
   findAllUsers,
   findUserByUsername,
   findUserToConnect,
+  findUserById,
 } = require('../queries/users.queries');
-const { createToken } = require('../services/jwt.service');
 
 exports.getUsersList = async (req, res, next) => {
   try {
@@ -70,3 +73,28 @@ exports.signin = async (req, res) => {
     });
   }
 }
+
+const uploadImage = multer({
+  storage: multer.diskStorage({
+    destination: (req, file, callback) => {
+      callback(null, resolve('public', 'img', 'avatars'));
+    },
+    filename: (req, file, callback) => {
+      const filename = `${Date.now()}-${file.originalname}`;
+      callback(null, filename);
+    }
+  })
+});
+
+exports.updateUserImage = [
+  uploadImage.single('inputAvatar'),
+  async (req, res, next) => {
+    try {
+      const user = await findUserById(req.user.sub);
+      user.avatar = `/static/img/avatars/${req.file.filename}`;
+      await user.save();
+      res.redirect('/');
+    }
+    catch (e) { next(e) }
+  }
+]

@@ -3,6 +3,7 @@ const { checkAuth } = require('../middlewares/check-auth.middleware');
 const {
   getUsersList,
   getUserProfile,
+  updateUserImage,
   signupForm,
   signinForm,
   signup,
@@ -16,5 +17,7 @@ router.post('/signin', signin);
 
 router.get('/', checkAuth, getUsersList);
 router.get('/:username', checkAuth, getUserProfile);
+
+router.post('/update/image', checkAuth, updateUserImage);
 
 module.exports = router;
