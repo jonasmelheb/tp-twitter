@@ -8,10 +8,12 @@ const {
   signinForm,
   signup,
   signin,
+  signout,
 } = require('../controllers/users.controllers');
 
 router.get('/signup', signupForm);
 router.get('/signin', signinForm);
+router.get('/signout', signout);
 router.post('/signup', signup);
 router.post('/signin', signin);
 

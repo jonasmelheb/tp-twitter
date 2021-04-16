@@ -74,6 +74,11 @@ exports.signin = async (req, res) => {
   }
 }
 
+exports.signout = (req, res) => {
+  res.clearCookie('jwt');
+  res.redirect('/');
+}
+
 const uploadImage = multer({
   storage: multer.diskStorage({
     destination: (req, file, callback) => {
