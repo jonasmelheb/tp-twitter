@@ -1,1 +1,17 @@
 h1 Liste des touites
+    each touite in touiteAndAuthor
+        div.touite            
+            div.avatarName
+                img(
+                src=touite.author.avatar
+                width="100"
+                height="100"
+                onerror="this.src='/static/img/avatars/default-avatar.svg'")
+                p=`${touite.author.username}`
+            div.icones
+                a.modify(onclick='modify("' + touite.content + '")')
+                    i.fas.fa-pencil-alt
+            div.touites-content.set(id=`${touite.id}`): p.touite-text.show=`${touite.content}`
+            div.icones
+                a(href=`/touites/delete/${touite.content}`)
+                    i.fas.fa-trash-alt

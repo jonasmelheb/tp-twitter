@@ -1,11 +1,19 @@
 const { findUserById } = require('../queries/users.queries');
-const { createNewTouite } = require('../queries/touites.queries');
+const { createNewTouite,
+        findAllTouites,
+        findTouitesAuthor
+ } = require('../queries/touites.queries');
 
 exports.getTouitesPage = async (req, res, next) => {
   try {
     const user = await findUserById(req.user.sub);
-    const touites = [];
-    res.render('pages/touites-page', { touites, user });
+    const touites = await findAllTouites()
+    let touiteAndAuthor = []
+    for await (touite of touites) {
+      touite["author"] = await findTouitesAuthor(touite.author)
+      touiteAndAuthor.push(touite)
+    }
+    res.render('pages/touites-page', { touiteAndAuthor, user });
   }
   catch (e) { next(e) }
 };
