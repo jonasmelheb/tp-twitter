@@ -29,3 +29,10 @@ a {
   text-decoration: none;
   color: white;
 }
+
+.show {
+  display: inline-block;
+}
+.hide {
+  display: none;
+}
