@@ -9,9 +9,9 @@ h1 Liste des touites
                 onerror="this.src='/static/img/avatars/default-avatar.svg'")
                 p=`${touite.author.username}`
             div.icones
-                a.modify(onclick='modify("' + touite.content + '")')
+                a.modify(onclick='modify("' + touite.id + '")')
                     i.fas.fa-pencil-alt
             div.touites-content.set(id=`${touite.id}`): p.touite-text.show=`${touite.content}`
             div.icones
-                a(href=`/touites/delete/${touite.content}`)
+                a(href=`/touites/${touite.id}`)
                     i.fas.fa-trash-alt

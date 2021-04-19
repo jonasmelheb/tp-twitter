@@ -13,3 +13,7 @@ exports.findAllTouites = () => {
 exports.findTouitesAuthor = (id) => {
   return User.findById(id).exec();
 }
+
+exports.deleteTouiteById = (id) => {
+  return Touite.findByIdAndDelete(id).exec();
+}

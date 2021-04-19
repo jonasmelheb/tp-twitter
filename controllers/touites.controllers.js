@@ -1,8 +1,10 @@
 const { findUserById } = require('../queries/users.queries');
 const { createNewTouite,
         findAllTouites,
-        findTouitesAuthor
+        findTouitesAuthor, 
+        deleteTouiteById,
  } = require('../queries/touites.queries');
+const Touite = require('../database/models/touite.model');
 
 exports.getTouitesPage = async (req, res, next) => {
   try {
@@ -31,4 +33,14 @@ exports.createTouite = async (req, res) => {
     res.redirect('/');
   }
   catch (e) { throw e }
+}
+
+exports.deleteTouite = async (req, res) => {
+  const { touiteId } = req.params;
+  try {
+    await deleteTouiteById(touiteId);
+    res.redirect('/');
+  } catch (err) {
+    console.log(err);
+  }
 }
