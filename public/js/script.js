@@ -17,7 +17,7 @@ function modify (id) {
         let form = document.createElement('form');
         let formBtn = document.createElement('input');
         let textarea = document.createElement('textarea');
-        textarea.setAttribute('name','touiteText');
+        textarea.setAttribute('name','content');
         textarea.value = touiteText.textContent;
         formBtn.setAttribute('type','submit');
         formBtn.setAttribute('value','Modify');
@@ -30,7 +30,3 @@ function modify (id) {
         form.appendChild(formBtn);                    
     }
 }
-
-// function modify (id){
-    
-// }

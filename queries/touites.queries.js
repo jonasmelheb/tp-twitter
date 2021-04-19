@@ -14,6 +14,10 @@ exports.findTouitesAuthor = (id) => {
   return User.findById(id).exec();
 }
 
+exports.updateTouiteById = (id, content) => {
+  return Touite.findByIdAndUpdate (id, { content }).exec()
+}
+
 exports.deleteTouiteById = (id) => {
   return Touite.findByIdAndDelete(id).exec();
 }

@@ -2,6 +2,7 @@ const { findUserById } = require('../queries/users.queries');
 const { createNewTouite,
         findAllTouites,
         findTouitesAuthor, 
+        updateTouiteById,
         deleteTouiteById,
  } = require('../queries/touites.queries');
 const Touite = require('../database/models/touite.model');
@@ -35,12 +36,21 @@ exports.createTouite = async (req, res) => {
   catch (e) { throw e }
 }
 
+exports.editTouite = async (req, res) => {
+  const { touiteId } = req.params;
+  const { content } = req.body; 
+  try {
+    await updateTouiteById(touiteId, content);
+    res.redirect('/');
+  }
+  catch (e) { throw e }
+}
+
 exports.deleteTouite = async (req, res) => {
   const { touiteId } = req.params;
   try {
     await deleteTouiteById(touiteId);
     res.redirect('/');
-  } catch (err) {
-    console.log(err);
-  }
+  } catch (e) { throw e }
 }
+

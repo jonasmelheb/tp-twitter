@@ -8,10 +8,12 @@ h1 Liste des touites
                 height="100"
                 onerror="this.src='/static/img/avatars/default-avatar.svg'")
                 p=`${touite.author.username}`
-            div.icones
-                a.modify(onclick='modify("' + touite.id + '")')
-                    i.fas.fa-pencil-alt
+            if touite.author.id === user .id    
+                div.icones
+                    a.modify(onclick='modify("' + touite.id + '")')
+                        i.fas.fa-pencil-alt
             div.touites-content.set(id=`${touite.id}`): p.touite-text.show=`${touite.content}`
-            div.icones
-                a(href=`/touites/${touite.id}`)
-                    i.fas.fa-trash-alt
+            if touite.author.id === user .id    
+                div.icones
+                    a(href=`/touites/${touite.id}`)
+                        i.fas.fa-trash-alt

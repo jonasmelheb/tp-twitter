@@ -3,12 +3,14 @@ const {
   getTouitesPage,
   getTouiteFormPage,
   createTouite,
-  deleteTouite
+  editTouite,
+  deleteTouite,
 } = require('../controllers/touites.controllers');
-
+  
 router.get('/', getTouitesPage);
 router.get('/new', getTouiteFormPage);
 router.post('/', createTouite);
+router.post('/edit/:touiteId', editTouite);
 router.get('/:touiteId', deleteTouite);
 
 module.exports = router;
