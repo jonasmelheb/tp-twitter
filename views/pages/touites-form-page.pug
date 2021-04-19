@@ -1,4 +1,19 @@
 extends ../layout
 
 block content
-  h1 Formulaire des touites
+  - var actionUrl = touite._id ? "" : "/touites";
+
+  div.touite-form
+    form(method="post" action=actionUrl)
+      h1 Ecrire un touite
+      div
+        textarea(
+          name="content"
+          placeholder="Quoi de neuf ?")= touite.content
+      
+      if errors
+        ul.errors
+          each error in errors
+            li= error
+      
+      div: button(type="submit") Go !

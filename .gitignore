@@ -4,3 +4,5 @@ environment.js
 ssl/*
 !ssl/.gitkeep
 views/layout.pug~
+public/img/avatars/*
+public/img/avatars/default*
