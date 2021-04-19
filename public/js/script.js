@@ -24,7 +24,7 @@ function modify (id) {
         formBtn.setAttribute('class','bt-touite');
         form.setAttribute('method','post');
         form.setAttribute('class','touite-form');
-        form.setAttribute('action',`/touites/form/update/${id}`);
+        form.setAttribute('action',`/touites/edit/${id}`);
         touiteContent.appendChild(form);
         form.appendChild(textarea);
         form.appendChild(formBtn);                    
