@@ -23,7 +23,7 @@ const userSchema = Schema({
   },
   follows: {
     type: [Schema.Types.ObjectId],
-    ref: 'user'
+    ref: 'user',
   },
 });
 

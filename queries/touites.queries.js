@@ -7,7 +7,7 @@ exports.createNewTouite = (reqBody, { sub }) => {
 }
 
 exports.findAllTouites = () => {
-  return Touite.find().exec();
+  return Touite.find().sort({ _id: -1 }).exec();
 }
 
 exports.findTouitesAuthor = (id) => {

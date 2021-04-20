@@ -31,7 +31,7 @@ a {
 }
 
 .show {
-  display: inline-block;
+  display: block;
 }
 .hide {
   display: none;

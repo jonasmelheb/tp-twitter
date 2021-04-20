@@ -9,6 +9,7 @@ const {
   signup,
   signin,
   signout,
+  followUser
 } = require('../controllers/users.controllers');
 
 router.get('/signup', signupForm);
@@ -19,6 +20,7 @@ router.post('/signin', signin);
 
 router.get('/', checkAuth, getUsersList);
 router.get('/:username', checkAuth, getUserProfile);
+router.get('/follow/:userId', checkAuth, followUser);
 
 router.post('/update/image', checkAuth, updateUserImage);
 

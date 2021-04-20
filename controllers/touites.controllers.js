@@ -16,7 +16,13 @@ exports.getTouitesPage = async (req, res, next) => {
       touite["author"] = await findTouitesAuthor(touite.author)
       touiteAndAuthor.push(touite)
     }
-    res.render('pages/touites-page', { touiteAndAuthor, user });
+    touiteCount = 0;
+    for (let i = 0; i < touiteAndAuthor.length; i++) {
+      if (touiteAndAuthor[i].author.id === user.id)
+      touiteCount++;
+    }
+    console.log(user);
+    res.render('pages/touites-page', { touiteCount,touiteAndAuthor, user });
   }
   catch (e) { next(e) }
 };

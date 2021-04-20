@@ -7,6 +7,7 @@ const {
   findUserByUsername,
   findUserToConnect,
   findUserById,
+  followUserTouites
 } = require('../queries/users.queries');
 
 exports.getUsersList = async (req, res, next) => {
@@ -34,6 +35,15 @@ exports.getUserProfile = async (req, res, next) => {
   }
 }
 
+exports.followUser = async (req, res) => {
+  const { userId } = req.params
+  const { sub } = req.user
+  try {
+    await followUserTouites(sub,userId)
+    res.redirect('/touites');
+  }
+  catch (e) { throw e }
+}
 exports.signupForm = (req, res) => {
   res.render('pages/users-form-page', { signup: true });
 }

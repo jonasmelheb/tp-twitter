@@ -12,7 +12,19 @@
   border-radius: 5px;
   text-align: center;
 }
-
+.touite .bt-follow{
+    position: absolute;
+    top: 43%;
+    left: 0.7%;
+    text-align: center;
+    text-size-adjust: 10px;
+    font-size: 18px;
+    width: 105px;
+}
+.follow-container {
+  height: 234px;
+    position: absolute;
+}
 .touites-content .touite-form {
   display: flex!important;
   flex-flow: column!important;
@@ -45,6 +57,7 @@
 }
 .avatarName p {
   margin-left: 10px;
+  font-weight: bold;
 }
 #touite-list-container {
   grid-area: touites;
@@ -56,17 +69,24 @@
 }
 
 .touite {
-  display: grid;
+  display: flex;
+  flex-flow: column;
   background: #fff;
   margin-bottom: 10px;
   padding: 10px;
   gap: 8px;
   border-radius: 5px;
-  grid-template-columns: 1fr 80px;
-  grid-template-areas:  "avatar icones"
-                        "touite icones";
+  position: relative;
 }
-
+.icones {
+  position: absolute;
+    display: flex;
+    flex-flow: column;
+    right: 3%;
+    top: 25%;
+    height: 111px;
+    justify-content: space-around;
+}
 @media screen and (max-width: 829px) {
   .touite {
     grid-template-columns: 1fr 1fr;
@@ -112,9 +132,22 @@
     color: #444;
   }
 .touite .content {
-  grid-area: touite;
   font-size: 1.1rem;
   overflow: hidden;
   white-space: wrap;
   text-overflow: fade;
+
+}
+.touite-text {
+  font-weight: lighter!important;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  margin-top: 43px;
+  word-break: break-all;
+  max-width: 90%
+}
+.touites-content textarea{
+  font-size: 20px; 
 }

@@ -18,6 +18,10 @@ exports.findUserByUsername = (username) => {
   return User.findOne({ username }).exec();
 }
 
+exports.followUserTouites = (id, userId) => {
+  return User.findByIdAndUpdate(id,{ $push: { follows:[userId] }}).exec();
+}
+
 exports.findUserToConnect = async ({ email, password }) => {
   try {
     const user = await User.findOne({ email }).exec();

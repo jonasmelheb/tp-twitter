@@ -13,7 +13,7 @@
                         "touite follows";
 }
 
-.profile-container a {
+.profile-container a, .touite .bt-follow {
   background: var(--secondary-color);
   padding: 10px 0px;
   border-radius: 20px;

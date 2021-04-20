@@ -8,12 +8,20 @@ h1 Liste des touites
                 height="100"
                 onerror="this.src='/static/img/avatars/default-avatar.svg'")
                 p=`${touite.author.username}`
-            if touite.author.id === user .id    
+            div.touites-content.set(id=`${touite.id}`): p.touite-text.show=`${touite.content}`
+            if touite.author.id === user.id    
                 div.icones
                     a.modify(onclick='modify("' + touite.id + '")')
                         i.fas.fa-pencil-alt
-            div.touites-content.set(id=`${touite.id}`): p.touite-text.show=`${touite.content}`
-            if touite.author.id === user .id    
-                div.icones
                     a(href=`/touites/${touite.id}`)
                         i.fas.fa-trash-alt
+            else
+                input(type="hidden" value=author=`${touite.author.id}`)
+                if user.follows.length === 0
+                    div.follow-container: a.bt-follow(href=`/users/follow/${author}`) follow
+                else
+                    - if (user.follows.includes(touite.author.id))
+                        div.follow-container: a.bt-follow(href=`/users/unfollow/${author}`) unfollow
+                    - else
+                        div.follow-container: a.bt-follow(href=`/users/follow/${author}`) follow
+        
