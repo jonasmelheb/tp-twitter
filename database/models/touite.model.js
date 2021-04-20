@@ -11,7 +11,11 @@ const touiteSchema = Schema({
     type: Schema.Types.ObjectId,
     required: true,
     ref: 'user',
-  }
+  },
+  likes: {
+    type: [Schema.Types.ObjectId],
+    ref: 'user',
+  },
 })
 
 const Touite = model('touite', touiteSchema);

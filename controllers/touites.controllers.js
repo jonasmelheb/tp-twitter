@@ -4,6 +4,8 @@ const { createNewTouite,
         findTouitesAuthor, 
         updateTouiteById,
         deleteTouiteById,
+        likeTouiteUser,
+        unlikeTouiteUser,
  } = require('../queries/touites.queries');
 const Touite = require('../database/models/touite.model');
 
@@ -21,7 +23,6 @@ exports.getTouitesPage = async (req, res, next) => {
       if (touiteAndAuthor[i].author.id === user.id)
       touiteCount++;
     }
-    console.log(user);
     res.render('pages/touites-page', { touiteCount,touiteAndAuthor, user });
   }
   catch (e) { next(e) }
@@ -60,3 +61,22 @@ exports.deleteTouite = async (req, res) => {
   } catch (e) { throw e }
 }
 
+exports.likeTouite = async (req, res) => {
+  const { touiteId } = req.params
+  const { sub } = req.user
+  try {
+    await likeTouiteUser(touiteId,sub)
+    res.redirect('/touites');
+  }
+  catch (e) { throw e }
+}
+
+exports.unlikeTouite = async (req, res) => {
+  const { touiteId } = req.params
+  const { sub } = req.user
+  try {
+    await unlikeTouiteUser(touiteId,sub)
+    res.redirect('/touites');
+  }
+  catch (e) { throw e }
+}

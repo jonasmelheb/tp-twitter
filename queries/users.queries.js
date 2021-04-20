@@ -19,11 +19,11 @@ exports.findUserByUsername = (username) => {
 }
 
 exports.followUserTouites = (id, userId) => {
-  return User.findByIdAndUpdate(id,{ $push: { follows:[userId] }}).exec();
+  return User.findByIdAndUpdate(id,{ $push: { follows: [userId] }}).exec();
 }
 
 exports.unfollowUserTouites = (id, userId) => {
-  return User.findByIdAndUpdate(id,{ $pull: { follows:userId }}, {safe: true, upsert: true}).exec();
+  return User.findByIdAndUpdate(id,{ $pull: { follows: userId }}, {safe: true, upsert: true}).exec();
 }
 
 exports.findUserToConnect = async ({ email, password }) => {

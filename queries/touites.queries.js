@@ -29,3 +29,11 @@ exports.updateTouiteById = (id, content) => {
 exports.deleteTouiteById = (id) => {
   return Touite.findByIdAndDelete(id).exec();
 }
+
+exports.likeTouiteUser = (id, userId) => {
+  return Touite.findByIdAndUpdate(id,{ $push: { likes: [userId] }}).exec();
+}
+
+exports.likeTouiteUser = (id, userId) => {
+  return Touite.findByIdAndUpdate(id,{ $pull: { likes: userId }}, {safe: true, upsert: true}).exec();
+}
