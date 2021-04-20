@@ -14,6 +14,14 @@ exports.findTouitesAuthor = (id) => {
   return User.findById(id).exec();
 }
 
+exports.findUserTouite = (id) => {
+  return Touite.find({ author:id }).sort({ _id: -1 }).exec();
+}
+
+exports.findTouitesFollowed = (usersId) => {
+  return Touite.find({ author: usersId }).sort({ _id: -1 }).exec()
+}
+
 exports.updateTouiteById = (id, content) => {
   return Touite.findByIdAndUpdate (id, { content }).exec()
 }

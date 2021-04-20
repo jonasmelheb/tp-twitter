@@ -16,12 +16,14 @@ h1 Liste des touites
                     a(href=`/touites/${touite.id}`)
                         i.fas.fa-trash-alt
             else
-                input(type="hidden" value=author=`${touite.author.id}`)
+                div.likeBtn
+                     a(href=`/touites/like/${touite.id}`)
+                        <i class="far fa-thumbs-up"></i>
                 if user.follows.length === 0
-                    div.follow-container: a.bt-follow(href=`/users/follow/${author}`) follow
+                    div.follow-container: a.bt-follow(href=`/users/follow/${touite.author.id}`) follow
                 else
                     - if (user.follows.includes(touite.author.id))
-                        div.follow-container: a.bt-follow(href=`/users/unfollow/${author}`) unfollow
+                        div.follow-container: a.bt-follow(href=`/users/unfollow/${touite.author.id}`) unfollow
                     - else
-                        div.follow-container: a.bt-follow(href=`/users/follow/${author}`) follow
+                        div.follow-container: a.bt-follow(href=`/users/follow/${touite.author.id}`) follow
         

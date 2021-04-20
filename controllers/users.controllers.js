@@ -7,8 +7,14 @@ const {
   findUserByUsername,
   findUserToConnect,
   findUserById,
-  followUserTouites
+  followUserTouites,
+  unfollowUserTouites
 } = require('../queries/users.queries');
+const { 
+  findTouitesFollowed,
+  findTouitesAuthor,
+  findUserTouite
+} = require('../queries/touites.queries');
 
 exports.getUsersList = async (req, res, next) => {
   try {
@@ -23,11 +29,25 @@ exports.getUsersList = async (req, res, next) => {
 }
 
 exports.getUserProfile = async (req, res, next) => {
-  const { username } = req.params;
+  const { sub } = req.user
   try {
-    const user = await findUserByUsername(username);
-    const touites = [];
-    res.render('pages/users-form-page', { user, touites });
+    const user = await findUserById(sub);
+    const touites = await findTouitesFollowed(user.follows);
+    const userTouites = await findUserTouite(sub)
+    for await (userTouite of userTouites) {
+      touites.push(userTouite)
+    }
+    let touiteAndAuthor = []
+    for await (touite of touites) {
+      touite["author"] = await findTouitesAuthor(touite.author)
+      touiteAndAuthor.push(touite)
+    }
+    touiteCount = 0;
+    for (let i = 0; i < touiteAndAuthor.length; i++) {
+      if (touiteAndAuthor[i].author.id === user.id)
+      touiteCount++;
+    }
+    res.render('pages/users-page', { user, touiteAndAuthor });
   }
   catch (e) {
     console.error(e);
@@ -44,6 +64,17 @@ exports.followUser = async (req, res) => {
   }
   catch (e) { throw e }
 }
+
+exports.unfollowUser = async (req, res) => {
+  const { userId } = req.params
+  const { sub } = req.user
+  try {
+    await unfollowUserTouites(sub,userId)
+    res.redirect('/touites');
+  }
+  catch (e) { throw e }
+}
+
 exports.signupForm = (req, res) => {
   res.render('pages/users-form-page', { signup: true });
 }
