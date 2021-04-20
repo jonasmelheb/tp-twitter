@@ -2,12 +2,11 @@ const { findUserById } = require('../queries/users.queries');
 const { createNewTouite,
         findAllTouites,
         findTouitesAuthor, 
-        updateTouiteById,
-        deleteTouiteById,
         likeTouiteUser,
         unlikeTouiteUser,
+        updateTouiteById,
+        deleteTouiteById
  } = require('../queries/touites.queries');
-const Touite = require('../database/models/touite.model');
 
 exports.getTouitesPage = async (req, res, next) => {
   try {

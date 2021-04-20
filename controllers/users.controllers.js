@@ -4,7 +4,6 @@ const multer = require('multer');
 const {
   createUser,
   findAllUsers,
-  findUserByUsername,
   findUserToConnect,
   findUserById,
   followUserTouites,

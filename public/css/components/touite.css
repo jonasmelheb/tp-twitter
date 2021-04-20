@@ -151,9 +151,39 @@
 .touites-content textarea{
   font-size: 20px; 
 }
-.likeBtn a{
+.likeBtn button{
   position: absolute;
-    color: black;
-    top: 84%;
-    right: 1%;
+  color: black;
+  top: 74%;
+  right: 1%;
+  font-size: 1em;
+  margin: 5px;
+  background: lightblue;
+}
+.unlikeBtn button{
+  position: absolute;
+  color: white;
+  top: 74%;
+  right: 1%;
+  font-size: 1em;
+  margin: 5px;
+  background: grey;
+}
+.likeBtn button:hover, .unlikeBtn button:hover{
+  cursor: pointer;
+}
+.likeBtn .fa-heart{
+  position: absolute;
+  top: 78%;
+  right: 11%;
+  font-weight: lighter;
+}
+.unlikeBtn .fa-heart{
+  position: absolute;
+  top: 78%;
+  right: 13%;
+  font-weight: lighter;
+}
+.likeBtn i, .unlikeBtn i {
+  margin-left: 5px;
 }
